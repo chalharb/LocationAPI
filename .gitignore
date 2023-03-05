@@ -480,4 +480,4 @@ $RECYCLE.BIN/
 logs/
 
 # SqlLite db
-*.db
+*.db*

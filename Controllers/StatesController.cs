@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using LocationAPI.Persistence.Entities;
+using LocationAPI.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocationAPI.Controllers
@@ -7,11 +9,18 @@ namespace LocationAPI.Controllers
     [ApiController]
     public class StatesController : ControllerBase
     {
+        private readonly ILocationDbRepository _locationDbRepository;
+
+        public StatesController(ILocationDbRepository locationDbRepository)
+        {
+            _locationDbRepository= locationDbRepository ?? throw new ArgumentNullException(nameof(locationDbRepository));
+        }
 
         [HttpGet]
-        public ActionResult Index()
+        public async Task<ActionResult<IEnumerable<State>>> Index()
         {
-            return Ok();
+            var allStates = await _locationDbRepository.GetStatesAsync();
+            return Ok(allStates);
         }
     }
 }
