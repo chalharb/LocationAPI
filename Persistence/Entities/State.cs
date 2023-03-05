@@ -17,6 +17,8 @@ namespace LocationAPI.Persistence.Entities
         [MaxLength(3)]
         public string? Abbreviation { get; set; }
 
+        public ICollection<City> Cities { get; set; } = new List<City>();
+
         public State() 
         {
             Id = Guid.NewGuid();

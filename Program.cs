@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Serilog Logging Service
 builder.Host.UseSerilog();
 
-
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

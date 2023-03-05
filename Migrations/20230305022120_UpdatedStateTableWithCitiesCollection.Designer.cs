@@ -8,17 +8,41 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace LocationAPI.Persistence.Migrations
+namespace LocationAPI.Migrations
 {
     [DbContext(typeof(LocationDbContext))]
-    [Migration("20230304175248_UpdatedStateSeeder")]
-    partial class UpdatedStateSeeder
+    [Migration("20230305022120_UpdatedStateTableWithCitiesCollection")]
+    partial class UpdatedStateTableWithCitiesCollection
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.3");
+
+            modelBuilder.Entity("LocationAPI.Persistence.Entities.City", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("StateId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid?>("StateId1")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StateId1");
+
+                    b.ToTable("Cities");
+                });
 
             modelBuilder.Entity("LocationAPI.Persistence.Entities.State", b =>
                 {
@@ -43,22 +67,36 @@ namespace LocationAPI.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a166a5b7-b475-445d-b6f3-d67b6c9a9be1"),
+                            Id = new Guid("fe13f7e1-30d5-4ac3-8235-fe57cba53b06"),
                             Abbreviation = "TN",
                             Name = "Tennessee"
                         },
                         new
                         {
-                            Id = new Guid("827e552c-959b-4c72-bd7c-c306f7d48964"),
+                            Id = new Guid("7740490d-8ffc-4496-be1a-0b0aaacaf7ce"),
                             Abbreviation = "CA",
                             Name = "California"
                         },
                         new
                         {
-                            Id = new Guid("7d982c42-3c96-4e9f-8da0-032a89e4380d"),
+                            Id = new Guid("36c0d2fe-2a95-44b6-94fd-8e31ad3762a4"),
                             Abbreviation = "AK",
                             Name = "Alaska"
                         });
+                });
+
+            modelBuilder.Entity("LocationAPI.Persistence.Entities.City", b =>
+                {
+                    b.HasOne("LocationAPI.Persistence.Entities.State", "State")
+                        .WithMany("Cities")
+                        .HasForeignKey("StateId1");
+
+                    b.Navigation("State");
+                });
+
+            modelBuilder.Entity("LocationAPI.Persistence.Entities.State", b =>
+                {
+                    b.Navigation("Cities");
                 });
 #pragma warning restore 612, 618
         }

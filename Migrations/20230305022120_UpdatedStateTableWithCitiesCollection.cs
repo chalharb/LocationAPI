@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace LocationAPI.Persistence.Migrations
+namespace LocationAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdatedStateSeeder : Migration
+    public partial class UpdatedStateTableWithCitiesCollection : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,21 +16,26 @@ namespace LocationAPI.Persistence.Migrations
             migrationBuilder.DeleteData(
                 table: "States",
                 keyColumn: "Id",
-                keyValue: new Guid("5e1fb917-1ac6-4992-b122-d1f88b0c5ab4"));
+                keyValue: new Guid("052cbff5-2e85-4e23-a344-8cf6ee7e413d"));
 
             migrationBuilder.DeleteData(
                 table: "States",
                 keyColumn: "Id",
-                keyValue: new Guid("f70195f8-3ad7-4b20-8614-a51f44540a8a"));
+                keyValue: new Guid("79d9a3ff-5b0c-4b7c-bdde-8d22cd48881d"));
+
+            migrationBuilder.DeleteData(
+                table: "States",
+                keyColumn: "Id",
+                keyValue: new Guid("ebb64e7e-70aa-4fd2-8996-951d396e6d3a"));
 
             migrationBuilder.InsertData(
                 table: "States",
                 columns: new[] { "Id", "Abbreviation", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("7d982c42-3c96-4e9f-8da0-032a89e4380d"), "AK", "Alaska" },
-                    { new Guid("827e552c-959b-4c72-bd7c-c306f7d48964"), "CA", "California" },
-                    { new Guid("a166a5b7-b475-445d-b6f3-d67b6c9a9be1"), "TN", "Tennessee" }
+                    { new Guid("36c0d2fe-2a95-44b6-94fd-8e31ad3762a4"), "AK", "Alaska" },
+                    { new Guid("7740490d-8ffc-4496-be1a-0b0aaacaf7ce"), "CA", "California" },
+                    { new Guid("fe13f7e1-30d5-4ac3-8235-fe57cba53b06"), "TN", "Tennessee" }
                 });
         }
 
@@ -40,25 +45,26 @@ namespace LocationAPI.Persistence.Migrations
             migrationBuilder.DeleteData(
                 table: "States",
                 keyColumn: "Id",
-                keyValue: new Guid("7d982c42-3c96-4e9f-8da0-032a89e4380d"));
+                keyValue: new Guid("36c0d2fe-2a95-44b6-94fd-8e31ad3762a4"));
 
             migrationBuilder.DeleteData(
                 table: "States",
                 keyColumn: "Id",
-                keyValue: new Guid("827e552c-959b-4c72-bd7c-c306f7d48964"));
+                keyValue: new Guid("7740490d-8ffc-4496-be1a-0b0aaacaf7ce"));
 
             migrationBuilder.DeleteData(
                 table: "States",
                 keyColumn: "Id",
-                keyValue: new Guid("a166a5b7-b475-445d-b6f3-d67b6c9a9be1"));
+                keyValue: new Guid("fe13f7e1-30d5-4ac3-8235-fe57cba53b06"));
 
             migrationBuilder.InsertData(
                 table: "States",
                 columns: new[] { "Id", "Abbreviation", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("5e1fb917-1ac6-4992-b122-d1f88b0c5ab4"), "CA", "California" },
-                    { new Guid("f70195f8-3ad7-4b20-8614-a51f44540a8a"), "TN", "Tennessee" }
+                    { new Guid("052cbff5-2e85-4e23-a344-8cf6ee7e413d"), "AK", "Alaska" },
+                    { new Guid("79d9a3ff-5b0c-4b7c-bdde-8d22cd48881d"), "TN", "Tennessee" },
+                    { new Guid("ebb64e7e-70aa-4fd2-8996-951d396e6d3a"), "CA", "California" }
                 });
         }
     }
