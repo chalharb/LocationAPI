@@ -28,7 +28,7 @@ namespace LocationAPI.Controllers
             return Ok();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}/cities")]
         public ActionResult GetCitiesByState(Guid id)
         {
             _logger.LogDebug($"Getting all cities associates with state with id of {id}");

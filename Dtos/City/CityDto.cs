@@ -1,4 +1,4 @@
-﻿namespace LocationAPI.Models.City
+﻿namespace LocationAPI.Dtos.City
 {
     public class CityDto
     {

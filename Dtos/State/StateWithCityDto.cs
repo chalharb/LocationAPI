@@ -1,8 +1,8 @@
-﻿using LocationAPI.Models.City;
+﻿using LocationAPI.Dtos.City;
 
-namespace LocationAPI.Models.State
+namespace LocationAPI.Dtos.State
 {
-    public class StateDto
+    public class StateWithCityDto
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;

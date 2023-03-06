@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using LocationAPI.Persistence.Entities;
+using LocationAPI.Models;
 
 namespace LocationAPI.DbContexts
 {

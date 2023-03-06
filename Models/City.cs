@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace LocationAPI.Persistence.Entities
+namespace LocationAPI.Models
 {
     public class City
     {
@@ -9,11 +9,12 @@ namespace LocationAPI.Persistence.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
-        [Required]
-        [MaxLength(100)]
+        [Required(ErrorMessage = "name is required")]
+        [MaxLength(100, ErrorMessage = "Name cannot be longer than 100 characters")]
         public string? Name { get; set; }
 
-        public int StateId { get; set; }
+        [ForeignKey(nameof(State))]
+        public Guid StateId { get; set; }
         public State? State { get; set; }
 
         public City()
