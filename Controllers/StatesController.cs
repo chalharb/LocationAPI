@@ -1,6 +1,4 @@
-﻿using LocationAPI.Persistence.Entities;
-using LocationAPI.Services;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocationAPI.Controllers
@@ -9,18 +7,53 @@ namespace LocationAPI.Controllers
     [ApiController]
     public class StatesController : ControllerBase
     {
-        private readonly ILocationDbRepository _locationDbRepository;
+        private readonly ILogger<StatesController> _logger;
 
-        public StatesController(ILocationDbRepository locationDbRepository)
+        public StatesController(ILogger<StatesController> logger)
         {
-            _locationDbRepository= locationDbRepository ?? throw new ArgumentNullException(nameof(locationDbRepository));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<State>>> Index()
+        public ActionResult GetAllStates()
         {
-            var allStates = await _locationDbRepository.GetStatesAsync();
-            return Ok(allStates);
+            _logger.LogDebug("Getting all states");
+            return Ok();
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult GetState(Guid id)
+        {
+            _logger.LogDebug($"Getting state with id of {id}");
+            return Ok();
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult GetCitiesByState(Guid id)
+        {
+            _logger.LogDebug($"Getting all cities associates with state with id of {id}");
+            return Ok();
+        }
+
+        [HttpPost]
+        public ActionResult CreateState()
+        {
+            _logger.LogDebug("Creating State");
+            return Ok();
+        }
+
+        [HttpPatch]
+        public ActionResult UpdateState(Guid id)
+        {
+            _logger.LogDebug($"Updating state with the id of {id}");
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteState(Guid id)
+        {
+            _logger.LogDebug($"Deleting state with the id of {id}");
+            return Ok();
         }
     }
 }
